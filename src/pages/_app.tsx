@@ -4,6 +4,11 @@ import Head from 'next/head';
 import '../styles/globals.scss';
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  if (process.env.NODE_ENV === "development") {
+    require("mocks");
+  }
+
   return (
     <>
       <Head>

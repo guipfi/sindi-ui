@@ -1,0 +1,1 @@
+export const COMUNICATION_API = process.env.COMUNICATION_API;

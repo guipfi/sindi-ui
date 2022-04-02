@@ -1,7 +1,6 @@
-import { Typography } from 'components/shared/Typography';
 import styles from './styles.module.scss';
 
-interface IButton extends React.ButtonHTMLAttributes<HTMLButtonElement> {
+interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   variant?: 'filled' | 'outlined' | 'text';
   size?: 'normal' | 'small'
   icon?: React.ReactNode;
