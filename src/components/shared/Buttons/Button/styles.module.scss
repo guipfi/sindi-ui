@@ -1,0 +1,53 @@
+@import 'styles/colors';
+
+.btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: .75rem;
+  background: $black-gradient;
+  color: $white;
+  padding: 1rem 3rem;
+  font-size: 1rem;
+  text-align: center;
+  font-weight: 500;
+  border-radius: 1.25rem;
+  cursor: pointer;
+  width: fit-content;
+
+  &.fullWidth {
+    width: 100%;
+  }
+
+  &.small {
+    padding: .25rem 1.5rem;
+  }
+
+  &.text {
+    color: $black-gradient;
+    padding: 0;
+  }
+
+  &.outlined {
+    background: transparent;
+    border: 2px solid $black-gradient;
+  }
+
+  &.pink {
+    background: $pink-gradient;
+
+    &.outlined {
+      background: transparent;
+      border: 2px solid $pink-gradient;
+    }
+  }
+
+  & > .icon {
+    font-size: 1.5rem;
+    color: $white;
+
+    &.outlined {
+      color: $black-gradient;
+    }
+  }
+}
