@@ -14,11 +14,11 @@ const Home: NextPage = () => {
     <main className={styles.container}>
       <Header />
       <section>
-        <Typography variant='h2'>Atalhos</Typography>
+        <Typography variant={700} asComponent='h2'>Atalhos</Typography>
         <Shortcuts />
       </section>
       <section>
-        <Typography variant='h2'>Comunicados</Typography>
+        <Typography variant={700} asComponent='h2'>Comunicados</Typography>
         {isComunicationsLoading ? <Loader /> : <ComunicationList comunications={comunications} />}
         {isComunicationsError && <Typography>Erro ao carregar as comunicações</Typography>}
         

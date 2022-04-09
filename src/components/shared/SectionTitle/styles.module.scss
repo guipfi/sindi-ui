@@ -1,0 +1,27 @@
+@import 'styles/colors';
+
+.title {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+
+  &.default {
+    font-size: 1.5rem;
+  }
+
+  &.small {
+    font-size: 1.125rem;
+  }
+}
+
+.white {
+  color: $white;
+}
+
+.black {
+  color: $black;
+}
+
+.icon {
+  cursor: pointer;
+}

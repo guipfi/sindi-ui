@@ -1,3 +1,10 @@
+.container {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .loader,
 .loader:before,
 .loader:after {
@@ -10,7 +17,7 @@
 .loader {
   color: #da0167;
   text-indent: -9999em;
-  margin: 88px auto;
+  margin: 1rem;
   position: relative;
   font-size: 11px;
   -webkit-transform: translateZ(0);

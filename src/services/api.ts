@@ -1,1 +1,2 @@
-export const COMUNICATION_API = process.env.COMUNICATION_API;
+export const COMUNICATION_API = process.env.NEXT_PUBLIC_COMUNICATION_API;
+export const TRANSPARENCE_API = process.env.NEXT_PUBLIC_TRANSPARENCE_API;

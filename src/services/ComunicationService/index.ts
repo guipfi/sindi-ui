@@ -15,10 +15,10 @@ export class ComunicationService {
         throw new Error(response.statusText);
       }
       const data = await response.json();
-      return data.map((comunication: IComunication) => {
+      return data?.map((comunication: IComunication) => {
         return {
           ...comunication,
-          date: new Date(comunication.date)
+          date: new Date(comunication?.date)
         }
       });
     } catch (error) {

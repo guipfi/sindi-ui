@@ -1,41 +1,46 @@
 @import 'styles/colors';
 
-.body {
-  font-size: 1rem;
+.s-100 {
+  font-size: .75rem;
 }
 
-.h1 {
-  font-size: 1.5rem;
-  font-weight: 500;
-}
-
-.h2 {
-  font-size: 1.5rem;
-}
-
-.h3 {
-  font-size: 1.125rem;
-  font-weight: 500;
-}
-
-.h4 {
-  font-size: 1.125rem;
-  font-weight: 700;
-}
-
-.subtitle {
-  font-size: 1rem;
-  font-weight: 500;
-}
-
-.small {
+.s-200 {
   font-size: .75rem;
   font-weight: 500;
 } 
 
-.xsmall {
-  font-size: .75rem;
+.s-300 {
+  font-size: 1rem;
 }
+
+.s-400 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.s-500 {
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.s-600 {
+  font-size: 1.125rem;
+  font-weight: 700;
+}
+
+.s-700 {
+  font-size: 1.5rem;
+}
+
+.s-800 {
+  font-size: 1.5rem;
+  font-weight: 500;
+}
+
+
+
+
+
 
 .pink-gradient {
   color: $pink-gradient;

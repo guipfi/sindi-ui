@@ -1,29 +1,32 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
+import { QueryClient, QueryClientProvider } from 'react-query';
+import { ReactQueryDevtools } from 'react-query/devtools'
 
 import '../styles/globals.scss';
-import { QueryClient, QueryClientProvider } from 'react-query';
+
+const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
+
+  useEffect(() => {
+    console.log("re-rendered");
+  }, []);
 
   if (process.env.NODE_ENV === "development") {
     require("mocks");
   }
 
-  const queryClient = new QueryClient();
-
   return (
-    <>
+    <QueryClientProvider client={queryClient}>
       <Head>
         <meta name="description" content="Aplicativo para gestão do condomínio" />
         <title>Sindi - Seu síndico eficiente</title>
       </Head>
-      <QueryClientProvider client={queryClient}>
-        <Component {...pageProps} />
-      </QueryClientProvider>
-    </>
-
+      <Component {...pageProps} />
+      <ReactQueryDevtools />
+    </QueryClientProvider>
   );
 }
 
