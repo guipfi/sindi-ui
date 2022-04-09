@@ -28,14 +28,18 @@
     padding: .25rem 1.5rem;
   }
 
-  &.text {
-    color: $black-gradient;
-    padding: 0;
-  }
+  &.white {
+    background: $white;
+    color: $black;
 
-  &.outlined {
-    background: transparent;
-    border: 2px solid $black-gradient;
+    &.outlined {
+      background: transparent;
+      border: 2px solid $white;
+
+      & .icon {
+        color: $black-gradient
+      }
+    }
   }
 
   &.pink {
@@ -47,12 +51,35 @@
     }
   }
 
+  &.text {
+    color: $black;
+    padding: 0;
+    background: transparent;
+
+    & .icon {
+      color: $black;
+    }
+
+    &.white {
+      color: $white;
+    }
+
+    &.pink {
+      color: $pink;
+
+      & .icon {
+        color: $pink;
+      }
+    }
+  }
+
+  &.outlined {
+    background: transparent;
+    border: 2px solid $black-gradient;
+  }
+
   & > .icon {
     font-size: 1.5rem;
     color: $white;
-
-    &.outlined {
-      color: $black-gradient;
-    }
   }
 }

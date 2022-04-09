@@ -1,3 +1,4 @@
+import React from 'react';
 import { Colors } from 'styles/colors';
 
 import styles from './styles.module.scss';
@@ -9,16 +10,19 @@ interface ITypography extends React.HTMLAttributes<HTMLParagraphElement> {
   color?: Colors;
 }
 
-export const Typography: React.FC<ITypography> = ({ children, variant = 'body', fontSize = '1rem', fontWeight, color = 'black', style, ...rest }) => {
+export const Typography: React.FC<ITypography> = ({ children, variant = 'body', fontSize, fontWeight, color = 'black', style, className, ...rest }) => {
   const customStyles = {
-    fontSize: fontSize !== null ? `${fontSize}rem` : undefined,
+    fontSize: fontSize !== null ? fontSize : undefined,
     fontWeight: fontWeight !== null ? fontWeight : undefined,
+    lineHeight: '120%',
     ...style
   };
+  console.log(color);
+  console.log(styles[color]);
 
-  if(variant === 'h1') return <h1 style={customStyles} className={`${styles.baseFont} ${styles[color]} ${styles[variant]}`}>{children}</h1>;
-  if(variant === 'h2') return <h2 style={customStyles} className={`${styles.baseFont} ${styles[color]} ${styles[variant]}`}>{children}</h2>;
-  if(variant === 'h3') return <h3 style={customStyles} className={`${styles.baseFont} ${styles[color]} ${styles[variant]}`}>{children}</h3>;
+  if(variant === 'h1') return <h1 {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`}>{children}</h1>;
+  if(variant === 'h2') return <h2 {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`} >{children}</h2>;
+  if(variant === 'h3') return <h3 {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`} >{children}</h3>;
 
-  return <p style={customStyles} className={`${styles.baseFont} ${styles[color]} ${styles[variant]}`}>{children}</p>;
+  return <p {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`}>{children}</p>;
 };

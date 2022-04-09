@@ -1,10 +1,11 @@
+import React from 'react';
 import styles from './styles.module.scss';
 
 interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
   variant?: 'filled' | 'outlined' | 'text';
   size?: 'normal' | 'small'
   icon?: React.ReactNode;
-  color?: 'black' | 'pink';
+  color?: 'black' | 'pink' | 'white';
   fullWidth?: boolean;
 }
 

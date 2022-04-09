@@ -1,7 +1,9 @@
+import React from 'react';
 import type { AppProps } from 'next/app';
 import Head from 'next/head';
 
 import '../styles/globals.scss';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function MyApp({ Component, pageProps }: AppProps) {
 
@@ -9,13 +11,17 @@ function MyApp({ Component, pageProps }: AppProps) {
     require("mocks");
   }
 
+  const queryClient = new QueryClient();
+
   return (
     <>
       <Head>
         <meta name="description" content="Aplicativo para gestão do condomínio" />
         <title>Sindi - Seu síndico eficiente</title>
       </Head>
-      <Component {...pageProps} />
+      <QueryClientProvider client={queryClient}>
+        <Component {...pageProps} />
+      </QueryClientProvider>
     </>
 
   );
