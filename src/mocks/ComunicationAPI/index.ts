@@ -4,6 +4,7 @@ import { COMUNICATION_API } from "services/api";
 export const comunicationHandlers = [
   rest.get(`${COMUNICATION_API}/news`, (req, res, ctx) => {
     return res(
+      ctx.delay(),
       ctx.status(200),
       ctx.json(
         [

@@ -17,8 +17,6 @@ export const Typography: React.FC<ITypography> = ({ children, variant = 'body', 
     lineHeight: '120%',
     ...style
   };
-  console.log(color);
-  console.log(styles[color]);
 
   if(variant === 'h1') return <h1 {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`}>{children}</h1>;
   if(variant === 'h2') return <h2 {...rest} style={customStyles} className={`${styles[color]} ${styles[variant]}`} >{children}</h2>;
