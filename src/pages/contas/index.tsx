@@ -38,7 +38,7 @@ const Contas: NextPage = () => {
   return (
     <section className={styles.container}>
       <SectionTitle>Minhas contas</SectionTitle>
-      {isBillError || !bill ? <Typography>Sem fatura para exibir</Typography> : isBillLoading ? <Loader /> : (
+      {isBillLoading ? <Loader /> : isBillError || !bill ? <Typography>Sem fatura para exibir</Typography> : (
         <>
           <div className={styles.billInfos}>
             <div className={styles.billStatus}>

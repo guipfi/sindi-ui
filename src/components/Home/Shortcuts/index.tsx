@@ -27,7 +27,13 @@ export const Shortcuts: React.FC = () => {
       >
         Transparência
       </Shortcut>
-      {/* <Shortcut icon={<FontAwesomeIcon icon={faCalendarDays} />} color='pink'>Agendamentos</Shortcut> */}
+      <Shortcut 
+        icon={<FontAwesomeIcon icon={faCalendarDays} />} 
+        color='pink'
+        onClick={() => alert('Funcionalidade em desenvolvimento')}
+      >
+        Agendamentos
+      </Shortcut>
     </nav>
   );
 }
