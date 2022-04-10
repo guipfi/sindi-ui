@@ -1,88 +1,83 @@
-import { faPieChart } from '@fortawesome/free-solid-svg-icons';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Header, Loader, SectionTitle, Typography } from 'components/shared';
-import { useTransparenceReport } from 'hooks/useTransparenceReport';
+import { Header, Loader, SectionTitle, Typography } from 'components/shared';
+import { DetailsList } from 'components/Transparence/Details';
+import { BalanceDistribuitionChart } from 'components/Transparence/Details/BalanceDistribuitionChart';
+import { useTransparenceReportDetails } from 'hooks/useTransparenceReportDetails';
 import type { NextPage } from 'next';
-import { useRouter } from 'next/router';
-import { formatMoney, formatPercentage, months } from 'utils';
+import { formatMoney, months } from 'utils';
 
 import styles from './styles.module.scss';
 
-const Transparencia: NextPage = () => {
+const Detalhes: NextPage = () => {
 
   const { 
-    data: transparenceInfos, 
-    isLoading: isLoadingTransparenceInfos, 
-    isError: isErrorTransparenceInfos 
-  } = useTransparenceReport();
+    data: transparenceDetails, 
+    isLoading: isLoadingTransparenceDetails, 
+    isError: isErrorTransparenceDetails 
+  } = useTransparenceReportDetails();
 
   const {
-    total_balance,
+    current_month,
     monthly_balance,
-    previous_month_diff,
-    previous_year_diff
-  } = transparenceInfos || {};
-
-  if(isLoadingTransparenceInfos) {
-    return <Loader />
-  }
-
-  if(isErrorTransparenceInfos) {
-    return <Typography>Erro ao carregar as informações.</Typography>
-  }
-
-  const today = new Date();
-
-  const router = useRouter();
+    monthly_income,
+    monthly_outcome,
+    spendings,
+    relative_spendings_per_type,
+  } = transparenceDetails || {};
 
   return (
     <div className={styles.container}>
       <Header />
       <div className={styles.title}>
-        <SectionTitle>Transparência</SectionTitle>
-        <Typography variant={100} asComponent='small'>{months[today.getMonth()]}, {today.getFullYear()}</Typography>
+        <SectionTitle backUrl='/transparencia'>Detalhes</SectionTitle>
+        <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>
       </div>
-      <div className={styles.balance}>
-        <Typography variant={500} asComponent='h3'>Balanço total</Typography>
-        <Typography variant={800}>{formatMoney(total_balance ?? 0)}</Typography>
-      </div>
-      <div className={styles.balanceInfos}>
-        <div className={styles.monthBalance}>
-          <Typography>Balanço do mês</Typography>
-          <Typography 
-            variant={500} 
-            color={(monthly_balance ?? 0) > 0 ? 'green' : 'red'}
-          >
-            {(monthly_balance ?? 0) > 0 ? '+' : ''}{formatMoney(monthly_balance ?? 0)}
-          </Typography>
-        </div>
-        <div className={styles.monthDiff}>
-          <Typography variant={100}>
-            {(previous_month_diff ?? 0) > 0 ? '+' : ''}{formatPercentage(previous_month_diff ?? 0)} 
-            {' '}
-            em relação ao mês anterior
-          </Typography>
-          <Typography variant={100}>
-            {(previous_year_diff ?? 0) > 0 ? '+' : ''}{formatPercentage(previous_year_diff ?? 0)}
-            {' '}
-            em relação ao mesmo perído no ano anterior
-          </Typography>
-        </div>
-      </div>
-      <div className={styles.historicalBalance}>
-        <Typography>Balanço histórico</Typography>
-        <div className={styles.chart} />
-      </div>
-      <Button 
-        variant='text' 
-        icon={<FontAwesomeIcon icon={faPieChart} />} 
-        style={{margin: '0 auto'}}
-        onClick={() => router.push('/transparencia/detalhes')}
-      >
-        Ver detalhamento
-      </Button>
+      {isErrorTransparenceDetails && <Typography>Erro ao carregar as informações</Typography>}
+      {isLoadingTransparenceDetails ? <Loader /> : (
+        <>
+          <div className={styles.balanceInfos}>
+            <div className={styles.monthBalance}>
+              <Typography>
+                Balanço do mês:
+              </Typography>
+              <Typography 
+                variant={500} 
+                color={(monthly_balance ?? 0) > 0 ? 'green' : 'red'}
+              >
+                {(monthly_balance ?? 0) > 0 ? '+' : ''}{formatMoney(monthly_balance ?? 0)}
+              </Typography>
+            </div>
+            <div className={styles.monthIncomeAndOutcome}>
+              <div className={styles.monthInfo}>
+                <Typography variant={100}>
+                  Arrecadado no mês
+                </Typography>
+                <Typography variant={400}>
+                  +{formatMoney(monthly_income ?? 0)}
+                </Typography>
+              </div>
+              <div className={styles.monthInfo}>
+                <Typography variant={100}>
+                  Gasto no mês
+                </Typography>
+                <Typography variant={400}>
+                  {formatMoney(monthly_outcome ?? 0)}
+                </Typography>
+              </div>
+            </div>
+          </div>
+          <div className={styles.selector}>
+            <Typography className={styles.selected} variant={400} color='white'>Gastos</Typography>
+          </div>
+          <div className={styles.incomeDetails}>
+            <div className={styles.chart}>
+              <BalanceDistribuitionChart data={relative_spendings_per_type ?? []} />
+            </div>
+            <DetailsList details={spendings} types={relative_spendings_per_type?.map(item => item.type) ?? []} />
+          </div>
+        </>
+      )}
     </div>
   );
 };
 
-export default Transparencia;
+export default Detalhes;

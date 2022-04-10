@@ -11,7 +11,7 @@ interface ITypography extends React.HTMLAttributes<HTMLParagraphElement> {
   color?: Colors;
 }
 
-export const Typography: React.FC<ITypography> = ({ children, asComponent = 'p', variant = 300, fontSize, fontWeight, color = 'black', style, className, ...rest }) => {
+export const Typography: React.FC<ITypography> = ({ children, asComponent = 'p', variant = 300, fontSize, fontWeight, color = 'black', style, className = '', ...rest }) => {
   const CustomTag = asComponent;
 
 
@@ -23,5 +23,5 @@ export const Typography: React.FC<ITypography> = ({ children, asComponent = 'p',
     ...style
   };
 
-  return <CustomTag style={customStyles} className={`${styles[color]} ${styles[`s-${variant}`]}`}>{children}</CustomTag>;
+  return <CustomTag style={customStyles} className={`${className} ${styles[color]} ${styles[`s-${variant}`]}`}>{children}</CustomTag>;
 };

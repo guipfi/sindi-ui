@@ -39,4 +39,60 @@ export const transparenceHandlers = [
       })
     );
   }),
+
+  rest.get(`${TRANSPARENCE_API}/transparency_report/details`, (req, res, ctx) => {
+    return res(
+      ctx.delay(),
+      ctx.status(200),
+      ctx.json({
+        current_month: Date.now(),
+        monthly_balance: 33.999,
+        monthly_income: 260000,
+        monthly_outcome: 250000,
+        spendings: [{
+          name: 'Porteiros',
+          type: 'Serviços',
+          amount: 40000
+        },
+        {
+          name: 'Jardinagem',
+          type: 'Serviços',
+          amount: 3200
+        },
+        {
+          name: 'Pintura do bloco B',
+          type: 'Manutenção',
+          amount: 40000
+        },
+        {
+          name: 'Pintura do bloco B',
+          type: 'Manutenção',
+          amount: 5000
+        },
+        {
+          name: 'Conta de luz',
+          type: 'Contas',
+          amount: 2150
+        },
+        {
+          name: 'Câmeras de vigilância',
+          type: 'Aquisição',
+          amount: 10000
+        }],
+        relative_spendings_per_type: [{
+          type: 'Serviços',
+          value: 0.27
+        },{
+          type: 'Manutenção',
+          value: 0.23
+        },{
+          type: 'Contas',
+          value: 0.12
+        },{
+          type: 'Aquisição',
+          value: 0.58
+        }]
+      })
+    );
+  }),
 ];

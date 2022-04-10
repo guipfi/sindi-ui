@@ -18,14 +18,13 @@ const Transparencia: NextPage = () => {
   } = useTransparenceReport();
 
   const {
+    current_month,
     total_balance,
     monthly_balance,
     previous_month_diff,
     previous_year_diff,
     historical_balance,
   } = transparenceInfos || {};
-
-  const today = new Date();
 
   const router = useRouter();
 
@@ -34,7 +33,7 @@ const Transparencia: NextPage = () => {
       <Header />
       <div className={styles.title}>
         <SectionTitle>Transparência</SectionTitle>
-        <Typography variant={100} asComponent='small'>{months[today.getMonth()]}, {today.getFullYear()}</Typography>
+        <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>
       </div>
       {isErrorTransparenceInfos && <Typography>Erro ao carregar as informações</Typography>}
       {isLoadingTransparenceInfos ? <Loader /> : (
@@ -64,7 +63,7 @@ const Transparencia: NextPage = () => {
               <Typography variant={100}>
                 {(previous_year_diff ?? 0) > 0 ? '+' : ''}{formatPercentage(previous_year_diff ?? 0)}
                 {' '}
-                em relação ao mesmo perído no ano anterior
+                em relação ao mesmo período no ano anterior
               </Typography>
             </div>
           </div>
@@ -77,7 +76,7 @@ const Transparencia: NextPage = () => {
           <Button 
             variant='text' 
             icon={<FontAwesomeIcon icon={faPieChart} />} 
-            style={{margin: '0 auto'}}
+            style={{margin: '1rem auto'}}
             onClick={() => router.push('/transparencia/detalhes')}
           >
             Ver detalhamento

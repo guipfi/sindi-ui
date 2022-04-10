@@ -14,7 +14,7 @@ import {
 } from 'chart.js';
 import { Bar } from "react-chartjs-2";
 
-interface IBalancheChart {
+interface IBalanceChart {
   data: IMonthBalance[];
 }
 
@@ -28,7 +28,7 @@ ChartJS.register(
   ChartDataLabels
 );
 
-export const BalanceChart: React.FC<IBalancheChart> = ({ data }) => {
+export const BalanceChart: React.FC<IBalanceChart> = ({ data }) => {
   const historicalData = [...data];
   historicalData.reverse();
 
