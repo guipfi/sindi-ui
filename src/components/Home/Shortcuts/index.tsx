@@ -9,10 +9,25 @@ export const Shortcuts: React.FC = () => {
   
   return (
     <nav className={styles.shortcuts}>
-      <Shortcut icon={<FontAwesomeIcon icon={faComments} />}>Contato</Shortcut>
-      <Shortcut icon={<FontAwesomeIcon icon={faMoneyCheckDollar} />} color='pink'>Contas</Shortcut>
-      <Shortcut icon={<FontAwesomeIcon icon={faDollarSign} />} onClick={() => router.push('/transparencia')}>Transparência</Shortcut>
-      <Shortcut icon={<FontAwesomeIcon icon={faCalendarDays} />} color='pink'>Agendamentos</Shortcut>
+      <Shortcut 
+        icon={<FontAwesomeIcon icon={faComments} />} 
+        onClick={() => router.push('/contato')}
+      >
+        Contato
+      </Shortcut>
+      <Shortcut 
+        icon={<FontAwesomeIcon icon={faMoneyCheckDollar} />} 
+        color='pink' onClick={() => router.push('/contas')}
+      >
+        Contas
+      </Shortcut>
+      <Shortcut 
+        icon={<FontAwesomeIcon icon={faDollarSign} />} 
+        onClick={() => router.push('/transparencia')}
+      >
+        Transparência
+      </Shortcut>
+      {/* <Shortcut icon={<FontAwesomeIcon icon={faCalendarDays} />} color='pink'>Agendamentos</Shortcut> */}
     </nav>
   );
 }

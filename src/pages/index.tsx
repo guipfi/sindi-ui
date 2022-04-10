@@ -11,19 +11,18 @@ const Home: NextPage = () => {
   const { data: comunications, isLoading: isComunicationsLoading, isError: isComunicationsError } = useComunicationsList();
 
   return (
-    <main className={styles.container}>
-      <Header />
-      <section>
+    <section className={styles.container}>
+      <div>
         <Typography variant={700} asComponent='h2'>Atalhos</Typography>
         <Shortcuts />
-      </section>
-      <section>
+      </div>
+      <div>
         <Typography variant={700} asComponent='h2'>Comunicados</Typography>
         {isComunicationsLoading ? <Loader /> : <ComunicationList comunications={comunications} />}
         {isComunicationsError && <Typography>Erro ao carregar as comunicações</Typography>}
         
-      </section>
-    </main>
+      </div>
+    </section>
   );
 };
 

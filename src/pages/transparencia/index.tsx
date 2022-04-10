@@ -29,8 +29,7 @@ const Transparencia: NextPage = () => {
   const router = useRouter();
 
   return (
-    <div className={styles.container}>
-      <Header />
+    <section className={styles.container}>
       <div className={styles.title}>
         <SectionTitle>Transparência</SectionTitle>
         <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>
@@ -83,7 +82,7 @@ const Transparencia: NextPage = () => {
           </Button>
         </>
       )}
-    </div>
+    </section>
   );
 };
 

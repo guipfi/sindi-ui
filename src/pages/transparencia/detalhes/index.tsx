@@ -1,5 +1,4 @@
-import { Header, Loader, SectionTitle, Typography } from 'components/shared';
-import { DetailsList } from 'components/Transparence/Details';
+import { Header, Loader, SectionTitle, Typography, DetailsList } from 'components/shared';
 import { BalanceDistribuitionChart } from 'components/Transparence/Details/BalanceDistribuitionChart';
 import { useTransparenceReportDetails } from 'hooks/useTransparenceReportDetails';
 import type { NextPage } from 'next';
@@ -25,8 +24,7 @@ const Detalhes: NextPage = () => {
   } = transparenceDetails || {};
 
   return (
-    <div className={styles.container}>
-      <Header />
+    <section className={styles.container}>
       <div className={styles.title}>
         <SectionTitle backUrl='/transparencia'>Detalhes</SectionTitle>
         <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>
@@ -72,11 +70,15 @@ const Detalhes: NextPage = () => {
             <div className={styles.chart}>
               <BalanceDistribuitionChart data={relative_spendings_per_type ?? []} />
             </div>
-            <DetailsList details={spendings} types={relative_spendings_per_type?.map(item => item.type) ?? []} />
+            <DetailsList 
+              details={spendings} 
+              hasMarker={true} 
+              types={relative_spendings_per_type?.map(item => item.type) ?? []} 
+            />
           </div>
         </>
       )}
-    </div>
+    </section>
   );
 };
 

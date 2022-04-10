@@ -4,9 +4,9 @@ import styles from './styles.module.scss';
 
 const Contato: NextPage = () => {
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       Contato
-    </div>
+    </section>
   );
 };
 

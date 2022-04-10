@@ -6,7 +6,7 @@
   justify-content: center;
   align-items: center;
   gap: .75rem;
-  background: $black-gradient;
+  background: $black;
   color: $white;
   padding: 1rem 3rem;
   font-size: 1rem;
@@ -38,17 +38,17 @@
       border: 2px solid $white;
 
       & .icon {
-        color: $black-gradient
+        color: $black;
       }
     }
   }
 
   &.pink {
-    background: $pink-gradient;
+    background: $pink;
 
     &.outlined {
       background: transparent;
-      border: 2px solid $pink-gradient;
+      border: 2px solid $pink;
     }
   }
 
@@ -76,7 +76,12 @@
 
   &.outlined {
     background: transparent;
-    border: 2px solid $black-gradient;
+    border: 2px solid $black;
+    color: $black;
+
+    & .icon {
+      color: $black;
+    }
   }
 
   & > .icon {

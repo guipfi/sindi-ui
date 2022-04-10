@@ -8,9 +8,9 @@ const Comunicados: NextPage = () => {
   const { id } = router.query;
 
   return (
-    <div className={styles.container}>
+    <section className={styles.container}>
       Comunicado {id}
-    </div>
+    </section>
   );
 };
 

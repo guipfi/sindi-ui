@@ -3,16 +3,13 @@ import type { AppProps } from 'next/app';
 import Head from 'next/head';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query/devtools'
+import Layout from 'layout/Main';
 
 import '../styles/globals.scss';
 
 const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
-
-  useEffect(() => {
-    console.log("re-rendered");
-  }, []);
 
   if (process.env.NODE_ENV === "development") {
     require("mocks");
@@ -24,7 +21,9 @@ function MyApp({ Component, pageProps }: AppProps) {
         <meta name="description" content="Aplicativo para gestão do condomínio" />
         <title>Sindi - Seu síndico eficiente</title>
       </Head>
-      <Component {...pageProps} />
+      <Layout>
+        <Component {...pageProps} />
+      </Layout>
       <ReactQueryDevtools />
     </QueryClientProvider>
   );

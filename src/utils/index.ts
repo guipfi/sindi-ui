@@ -13,3 +13,11 @@ export function formatPercentage(percentage: number) {
 export function formatMoney(money: number) {
   return money.toLocaleString('pt-BR', { maximumFractionDigits: 2, minimumFractionDigits: 2, style: 'currency', currency: 'BRL' })
 }
+
+export function getLocalStorageValue(key: string) {
+  if (typeof window !== "undefined") {
+    const saved = localStorage.getItem(key);
+    const value = saved ? JSON.parse(saved) : undefined;
+    return value;
+  }
+}

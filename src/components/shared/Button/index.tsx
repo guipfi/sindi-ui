@@ -11,7 +11,7 @@ interface IButton extends React.HTMLAttributes<HTMLButtonElement> {
 
 export const Button: React.FC<IButton> = ({ children, variant = 'filled', size = 'normal', icon = null, color = 'black', fullWidth = false, ...rest }) => (
   <button 
-    className={`${styles.btn} ${styles[variant]} ${styles[size]} ${styles[color]} ${fullWidth ? styles.full : ''}`}
+    className={`${styles.btn} ${styles[variant]} ${styles[size]} ${styles[color]} ${fullWidth ? styles.fullWidth : ''}`}
     {...rest}
   >
     {icon && <i className={styles.icon}>{icon}</i>}
