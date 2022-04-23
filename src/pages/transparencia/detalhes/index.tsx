@@ -25,6 +25,7 @@ const Detalhes: NextPage = () => {
 
   return (
     <section className={styles.container}>
+      <Header />
       <div className={styles.title}>
         <SectionTitle backUrl='/transparencia'>Detalhes</SectionTitle>
         <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>

@@ -1,6 +1,6 @@
 import { faBarcode, faFileInvoiceDollar } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, DetailsList, Loader, SectionTitle, Typography } from 'components/shared';
+import { Button, DetailsList, Header, Loader, SectionTitle, Typography } from 'components/shared';
 import { useBill } from 'hooks/useBill';
 import type { NextPage } from 'next';
 import { formatMoney, getLocalStorageValue, months } from 'utils';
@@ -37,6 +37,7 @@ const Contas: NextPage = () => {
 
   return (
     <section className={styles.container}>
+      <Header />
       <SectionTitle>Minhas contas</SectionTitle>
       {isBillLoading ? <Loader /> : isBillError || !bill ? <Typography>Sem fatura para exibir</Typography> : (
         <>

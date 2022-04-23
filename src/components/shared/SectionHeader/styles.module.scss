@@ -1,0 +1,29 @@
+@import 'styles/colors';
+
+.stretchBg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  background: $pink-gradient;
+  height: 10rem;
+  z-index: -1;
+}
+
+.content {
+  top: 0;
+  left: 0;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  height: 10rem;
+  padding: 1rem 1rem 2rem 1rem;
+  background: $pink-gradient;
+  justify-content: space-between;
+  width: calc(100% + 2rem);
+  margin: -1rem -1rem 0 -1rem;
+
+  &.black {
+    background: $black-gradient;
+  }
+}

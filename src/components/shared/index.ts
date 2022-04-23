@@ -5,5 +5,7 @@ import { Loader } from './Loader';
 import { SectionTitle } from './SectionTitle';
 import { DetailsList } from './DetailsList';
 import { Detail } from './Detail';
+import { SectionHeader } from './SectionHeader';
+import { WhatsApp } from './WhatsApp';
 
-export { Header, Button, Typography, Loader, SectionTitle, DetailsList, Detail };
+export { Header, Button, Typography, Loader, SectionTitle, DetailsList, Detail, SectionHeader, WhatsApp };

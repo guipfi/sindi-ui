@@ -12,6 +12,7 @@ const Home: NextPage = () => {
 
   return (
     <section className={styles.container}>
+      <Header />
       <div>
         <Typography variant={700} asComponent='h2'>Atalhos</Typography>
         <Shortcuts />

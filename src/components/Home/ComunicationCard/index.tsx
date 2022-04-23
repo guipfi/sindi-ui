@@ -31,7 +31,7 @@ export const ComunicationCard: React.FC<IComunicationCard> = ({ identifier, titl
   }
 
   return (
-    <li key={identifier} className={styles.content} onClick={() => router.push(`comunicados/${identifier}`)}>
+    <li key={identifier} className={styles.content} onClick={() => router.push(`comunicado/${identifier}`)}>
       <div className={styles.texts}>
         <Typography variant={400} asComponent='h1' color='white' className={styles.title}>{title}</Typography>
         <Typography variant={200} color='white' fontWeight={300} className={styles.title}>{formatFullDate(date)}</Typography>
