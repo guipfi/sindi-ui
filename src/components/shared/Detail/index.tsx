@@ -10,15 +10,25 @@ export interface IDetail extends React.HTMLAttributes<HTMLDivElement> {
   markerColor?: string;
 }
 
-export const Detail: React.FC<IDetail> = ({ name, type, amount, markerColor }) => (
+export const Detail: React.FC<IDetail> = ({
+  name,
+  type,
+  amount,
+  markerColor,
+}) => (
   <li key={name} className={styles.content}>
     <div className={styles.infos}>
-      {markerColor && <i className={styles.marker} style={{background: markerColor}} />}
+      {markerColor != null && (
+        <i className={styles.marker} style={{ background: markerColor }} />
+      )}
       <div className={styles.texts}>
         <Typography variant={400}>{name}</Typography>
         <Typography variant={100}>{type}</Typography>
       </div>
     </div>
-    <Typography variant={400}>{amount > 0 ? '+' : ''}{formatMoney(amount)}</Typography>
+    <Typography variant={400}>
+      {amount > 0 ? '+' : ''}
+      {formatMoney(amount)}
+    </Typography>
   </li>
 );

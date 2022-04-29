@@ -1,3 +1,3 @@
-import { BalanceDistribuitionChart } from "./BalanceDistribuitionChart";
+import { BalanceDistribuitionChart } from './BalanceDistribuitionChart';
 
 export { BalanceDistribuitionChart };

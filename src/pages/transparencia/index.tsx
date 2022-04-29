@@ -1,6 +1,12 @@
 import { faPieChart } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { Button, Header, Loader, SectionTitle, Typography } from 'components/shared';
+import {
+  Button,
+  Header,
+  Loader,
+  SectionTitle,
+  Typography,
+} from 'components/shared';
 import { BalanceChart } from 'components/Transparence/BalanceChart';
 import { useTransparenceReport } from 'hooks/useTransparenceReport';
 import type { NextPage } from 'next';
@@ -10,11 +16,10 @@ import { formatMoney, formatPercentage, months } from 'utils';
 import styles from './styles.module.scss';
 
 const Transparencia: NextPage = () => {
-
-  const { 
-    data: transparenceInfos, 
-    isLoading: isLoadingTransparenceInfos, 
-    isError: isErrorTransparenceInfos 
+  const {
+    data: transparenceInfos,
+    isLoading: isLoadingTransparenceInfos,
+    isError: isErrorTransparenceInfos,
   } = useTransparenceReport();
 
   const {
@@ -33,37 +38,47 @@ const Transparencia: NextPage = () => {
       <Header />
       <div className={styles.title}>
         <SectionTitle>Transparência</SectionTitle>
-        <Typography variant={100} asComponent='small'>{months[current_month?.getMonth() ?? 0]}, {current_month?.getFullYear()}</Typography>
+        <Typography variant={100} asComponent="small">
+          {months[current_month?.getMonth() ?? 0]},{' '}
+          {current_month?.getFullYear()}
+        </Typography>
       </div>
-      {isErrorTransparenceInfos && <Typography>Erro ao carregar as informações</Typography>}
-      {isLoadingTransparenceInfos ? <Loader /> : (
+      {isErrorTransparenceInfos && (
+        <Typography>Erro ao carregar as informações</Typography>
+      )}
+      {isLoadingTransparenceInfos ? (
+        <Loader />
+      ) : (
         <>
           <div className={styles.balance}>
-            <Typography variant={500} asComponent='h3'>Balanço total</Typography>
-            <Typography variant={800}>{formatMoney(total_balance ?? 0)}</Typography>
+            <Typography variant={500} asComponent="h3">
+              Balanço total
+            </Typography>
+            <Typography variant={800}>
+              {formatMoney(total_balance ?? 0)}
+            </Typography>
           </div>
           <div className={styles.balanceInfos}>
             <div className={styles.monthBalance}>
-              <Typography>
-                Balanço do mês:
-              </Typography>
-              <Typography 
-                variant={500} 
+              <Typography>Balanço do mês:</Typography>
+              <Typography
+                variant={500}
                 color={(monthly_balance ?? 0) > 0 ? 'green' : 'red'}
               >
-                {(monthly_balance ?? 0) > 0 ? '+' : ''}{formatMoney(monthly_balance ?? 0)}
+                {(monthly_balance ?? 0) > 0 ? '+' : ''}
+                {formatMoney(monthly_balance ?? 0)}
               </Typography>
             </div>
             <div className={styles.monthDiff}>
               <Typography variant={100}>
-                {(previous_month_diff ?? 0) > 0 ? '+' : ''}{formatPercentage(previous_month_diff ?? 0)} 
-                {' '}
-                em relação ao mês anterior
+                {(previous_month_diff ?? 0) > 0 ? '+' : ''}
+                {formatPercentage(previous_month_diff ?? 0)} em relação ao mês
+                anterior
               </Typography>
               <Typography variant={100}>
-                {(previous_year_diff ?? 0) > 0 ? '+' : ''}{formatPercentage(previous_year_diff ?? 0)}
-                {' '}
-                em relação ao mesmo período no ano anterior
+                {(previous_year_diff ?? 0) > 0 ? '+' : ''}
+                {formatPercentage(previous_year_diff ?? 0)} em relação ao mesmo
+                período no ano anterior
               </Typography>
             </div>
           </div>
@@ -73,10 +88,10 @@ const Transparencia: NextPage = () => {
               <BalanceChart data={historical_balance ?? []} />
             </div>
           </div>
-          <Button 
-            variant='text' 
-            icon={<FontAwesomeIcon icon={faPieChart} />} 
-            style={{margin: '1rem auto'}}
+          <Button
+            variant="text"
+            icon={<FontAwesomeIcon icon={faPieChart} />}
+            style={{ margin: '1rem auto' }}
             onClick={() => router.push('/transparencia/detalhes')}
           >
             Ver detalhamento

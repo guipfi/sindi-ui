@@ -1,7 +1,7 @@
-import { TRANSPARENCE_API } from "services/api";
+import { TRANSPARENCE_API } from 'services/api';
 
 export interface IMonthBalance {
-  month: Date,
+  month: Date;
   value: number;
 }
 
@@ -26,12 +26,12 @@ export interface IBalanceTypeDistribuition {
 }
 
 export interface ITransparenceReportDetails {
-  current_month: Date,
+  current_month: Date;
   monthly_balance: number;
   monthly_income: number;
   monthly_outcome: number;
-  spendings: ISpending[],
-  relative_spendings_per_type: IBalanceTypeDistribuition[]
+  spendings: ISpending[];
+  relative_spendings_per_type: IBalanceTypeDistribuition[];
 }
 
 export class TransparenceService {
@@ -45,13 +45,15 @@ export class TransparenceService {
       return {
         ...report,
         current_month: new Date(report?.current_month),
-        historical_balance: report?.historical_balance.map((monthBalance: IMonthBalance) => { 
-          return {
-            ...monthBalance,
-            month: new Date(monthBalance?.month)
+        historical_balance: report?.historical_balance.map(
+          (monthBalance: IMonthBalance) => {
+            return {
+              ...monthBalance,
+              month: new Date(monthBalance?.month),
+            };
           }
-        })
-      }
+        ),
+      };
     } catch (error) {
       throw error;
     }
@@ -59,7 +61,9 @@ export class TransparenceService {
 
   static async getReportDetails(): Promise<ITransparenceReportDetails> {
     try {
-      const response = await fetch(`${TRANSPARENCE_API}/transparency_report/details`);
+      const response = await fetch(
+        `${TRANSPARENCE_API}/transparency_report/details`
+      );
       if (!response.ok) {
         throw new Error(response.statusText);
       }
@@ -67,7 +71,7 @@ export class TransparenceService {
       return {
         ...report,
         current_month: new Date(report?.current_month),
-      }
+      };
     } catch (error) {
       throw error;
     }

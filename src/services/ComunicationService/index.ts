@@ -1,4 +1,4 @@
-import { COMUNICATION_API } from "services/api";
+import { COMUNICATION_API } from 'services/api';
 
 export interface IComunication {
   key: number;
@@ -30,8 +30,8 @@ export class ComunicationService {
       return data?.map((comunication: IComunication) => {
         return {
           ...comunication,
-          date: new Date(comunication?.date)
-        }
+          date: new Date(comunication?.date),
+        };
       });
     } catch (error) {
       throw error;
@@ -47,8 +47,8 @@ export class ComunicationService {
       const data = await response.json();
       return {
         ...data,
-        date: new Date(data?.date) 
-      }  
+        date: new Date(data?.date),
+      };
     } catch (error) {
       throw error;
     }

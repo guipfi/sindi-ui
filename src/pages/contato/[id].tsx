@@ -16,20 +16,15 @@ const Pergunta: NextPage = () => {
     isError: isErrorFaq,
   } = useFaqQuestion(id as string);
 
-  const {
-    question,
-    answer,
-  } = faqQuestion || {};
+  const { question, answer } = faqQuestion || {};
 
   return (
     <section className={styles.container}>
-      <SectionHeader title={question || ''} />
+      <SectionHeader title={question ?? ''} />
       {isLoadingFaq && <Loader />}
       {isErrorFaq && <Typography>Erro ao carregar a pergunta.</Typography>}
       <section className={styles.answer}>
-        <Typography style={{whiteSpace: 'pre-wrap'}}>
-          {answer}
-        </Typography>
+        <Typography style={{ whiteSpace: 'pre-wrap' }}>{answer}</Typography>
       </section>
       <WhatsApp />
     </section>

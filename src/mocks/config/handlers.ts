@@ -1,7 +1,6 @@
-import { billHandlers } from "mocks/BillAPI";
-import { transparenceHandlers } from "mocks/TransparenceAPI";
-import { comunicationHandlers } from "../ComunicationAPI";
-
+import { billHandlers } from 'mocks/BillAPI';
+import { transparenceHandlers } from 'mocks/TransparenceAPI';
+import { comunicationHandlers } from '../ComunicationAPI';
 
 export const handlers = [
   ...comunicationHandlers,

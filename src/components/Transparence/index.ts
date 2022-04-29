@@ -1,3 +1,3 @@
-import { BalanceChart } from "./BalanceChart";
+import { BalanceChart } from './BalanceChart';
 
 export { BalanceChart };

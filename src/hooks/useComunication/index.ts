@@ -5,5 +5,9 @@ import {
 } from 'services/ComunicationService';
 
 export function useComunication(id: string): UseQueryResult<IComunication> {
-  return useQuery(['comunication', id], () => ComunicationService.getComunication(id), { enabled: !!id });
+  return useQuery(
+    ['comunication', id],
+    () => ComunicationService.getComunication(id),
+    { enabled: !!id }
+  );
 }

@@ -8,4 +8,14 @@ import { Detail } from './Detail';
 import { SectionHeader } from './SectionHeader';
 import { WhatsApp } from './WhatsApp';
 
-export { Header, Button, Typography, Loader, SectionTitle, DetailsList, Detail, SectionHeader, WhatsApp };
+export {
+  Header,
+  Button,
+  Typography,
+  Loader,
+  SectionTitle,
+  DetailsList,
+  Detail,
+  SectionHeader,
+  WhatsApp,
+};

@@ -5,5 +5,7 @@ import {
 } from 'services/ComunicationService';
 
 export function useFaqQuestion(id: string): UseQueryResult<IFaqQuestion> {
-  return useQuery(['faq', id], () => ComunicationService.getFaqQuestion(id), { enabled: !!id });
+  return useQuery(['faq', id], () => ComunicationService.getFaqQuestion(id), {
+    enabled: !!id,
+  });
 }

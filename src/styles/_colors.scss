@@ -1,11 +1,15 @@
-$pink-gradient: linear-gradient(180deg, #E1006C 0%, #A6023D 100%);
-$black-gradient: linear-gradient(180deg, #000000 0%, #3F3F3F 100%);
-$black-gradient-reverse: linear-gradient(180deg, #000000 0%, #3F3F3F 100%);
-$gray-gradient: linear-gradient(180deg, #FCFCFC 0%, rgba(235, 235, 235, 0.77) 100%);
-$pink: #DA0166;
-$dark-pink: #A8023F;
+$pink-gradient: linear-gradient(180deg, #e1006c 0%, #a6023d 100%);
+$black-gradient: linear-gradient(180deg, #000000 0%, #3f3f3f 100%);
+$black-gradient-reverse: linear-gradient(180deg, #000000 0%, #3f3f3f 100%);
+$gray-gradient: linear-gradient(
+  180deg,
+  #fcfcfc 0%,
+  rgba(235, 235, 235, 0.77) 100%
+);
+$pink: #da0166;
+$dark-pink: #a8023f;
 $black: #000000;
-$red: #BA4040;
+$red: #ba4040;
 $green: #226829;
-$white: #FFFFFF;
-$gray: #EAEAEA;
+$white: #ffffff;
+$gray: #eaeaea;

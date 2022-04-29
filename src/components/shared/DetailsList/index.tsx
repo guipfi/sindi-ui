@@ -11,23 +11,31 @@ type DetailsWithMarker = {
   details: IDetail[] | undefined;
   types: string[];
   hasMarker: boolean;
-}
+};
 
 type DefaultDetails = {
   details: IDetail[] | undefined;
   types?: never;
   hasMarker?: never;
-}
+};
 
-export const DetailsList: React.FC<IDetailsList> = ({ details, types, hasMarker = false }) => (
+export const DetailsList: React.FC<IDetailsList> = ({
+  details,
+  types,
+  hasMarker = false,
+}) => (
   <ul className={styles.comunications}>
-    {details?.map(({name ,type, amount}, index) => 
+    {details?.map(({ name, type, amount }) => (
       <Detail
         name={name}
         type={type}
         amount={amount}
-        color={hasMarker ? chartColors[types?.findIndex(value => value === type) ?? 0] : undefined}
+        color={
+          hasMarker
+            ? chartColors[types?.findIndex((value) => value === type) ?? 0]
+            : undefined
+        }
       />
-    )}
+    ))}
   </ul>
 );

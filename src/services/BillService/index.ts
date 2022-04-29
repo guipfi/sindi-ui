@@ -1,4 +1,4 @@
-import { BILL_API } from "services/api";
+import { BILL_API } from 'services/api';
 
 export interface IBillDetail {
   name: string;
@@ -7,10 +7,10 @@ export interface IBillDetail {
 }
 
 export interface IBill {
-  current_month: Date,
-  due_date: Date,
-  bill_amount: 950,
-  status: "open" | "closed" | "paid" | "late";
+  current_month: Date;
+  due_date: Date;
+  bill_amount: 950;
+  status: 'open' | 'closed' | 'paid' | 'late';
   bar_code: string;
   pdf_url: string;
   details: IBillDetail[];
@@ -28,7 +28,7 @@ export class BillService {
         ...bill,
         current_month: new Date(bill?.current_month),
         due_date: new Date(bill?.due_date),
-      }
+      };
     } catch (error) {
       throw error;
     }

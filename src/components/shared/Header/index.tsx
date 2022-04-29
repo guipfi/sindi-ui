@@ -8,13 +8,12 @@ interface IHeader extends React.HTMLAttributes<HTMLDivElement> {
   background?: 'white' | 'black' | 'pink';
 }
 
-export const Header: React.FC<IHeader> = ({ background = 'white', ...rest }) => {
-
+export const Header: React.FC<IHeader> = ({ background = 'white' }) => {
   const router = useRouter();
 
   let logoUrl = '/images/logo-';
 
-  switch(background) {
+  switch (background) {
     case 'black':
       logoUrl += 'wp.svg';
       break;
@@ -27,14 +26,18 @@ export const Header: React.FC<IHeader> = ({ background = 'white', ...rest }) => 
 
   return (
     <header className={`${styles.header} ${styles[background]}`}>
-      <Image 
-        src={logoUrl} 
-        width={84} 
+      <Image
+        src={logoUrl}
+        width={84}
         height={53}
         onClick={() => router.push('/')}
-        style={{cursor: 'pointer'}}
+        style={{ cursor: 'pointer' }}
       />
-      <FontAwesomeIcon className={styles.icon} icon={faBell} onClick={() => alert('Funcionalidade em desenvolvimento')} />
+      <FontAwesomeIcon
+        className={styles.icon}
+        icon={faBell}
+        onClick={() => alert('Funcionalidade em desenvolvimento')}
+      />
     </header>
   );
-}
+};

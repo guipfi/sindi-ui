@@ -1,6 +1,7 @@
-import { IMonthBalance } from "services/TransparenceService";
-import { theme } from "styles/colors";
-import { formatPercentage, months } from "utils";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { IMonthBalance } from 'services/TransparenceService';
+import { theme } from 'styles/colors';
+import { formatPercentage, months } from 'utils';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   Chart as ChartJS,
@@ -12,7 +13,7 @@ import {
   Legend,
   ChartOptions,
 } from 'chart.js';
-import { Bar } from "react-chartjs-2";
+import { Bar } from 'react-chartjs-2';
 
 interface IBalanceChart {
   data: IMonthBalance[];
@@ -32,7 +33,13 @@ export const BalanceChart: React.FC<IBalanceChart> = ({ data }) => {
   const historicalData = [...data];
   historicalData.reverse();
 
-  const labels = historicalData.map(({month}) => `${months[month.getMonth()].substring(0,3)}/${month.getFullYear().toString().substring(2,4)}`);
+  const labels = historicalData.map(
+    ({ month }) =>
+      `${months[month.getMonth()].substring(0, 3)}/${month
+        .getFullYear()
+        .toString()
+        .substring(2, 4)}`
+  );
 
   const options: ChartOptions = {
     maintainAspectRatio: false,
@@ -51,14 +58,14 @@ export const BalanceChart: React.FC<IBalanceChart> = ({ data }) => {
           color: theme.colors.black,
         },
         grid: {
-          display: false
+          display: false,
         },
       },
       y: {
         display: false,
         grid: {
-          display: false
-        }
+          display: false,
+        },
       },
     },
     layout: {
@@ -75,7 +82,7 @@ export const BalanceChart: React.FC<IBalanceChart> = ({ data }) => {
         font: {
           family: 'Roboto',
           weight: 500,
-          size: 12
+          size: 12,
         },
         anchor: 'end',
         align: 'end',
@@ -83,21 +90,30 @@ export const BalanceChart: React.FC<IBalanceChart> = ({ data }) => {
         color: theme.colors.black,
         formatter: function (value: number) {
           return formatPercentage(value);
-        }
-      }
-    }
+        },
+      },
+    },
   };
 
   const chartData = {
     labels: labels,
-    datasets: [{
-      backgroundColor: [...Array(labels.length-1).fill(theme.colors.black), theme.colors.pink],
-      data: historicalData.map(month => month.value),
-      color: theme.colors.black,
-    }],
+    datasets: [
+      {
+        backgroundColor: [
+          ...Array(labels.length - 1).fill(theme.colors.black),
+          theme.colors.pink,
+        ],
+        data: historicalData.map((month) => month.value),
+        color: theme.colors.black,
+      },
+    ],
   };
 
   return (
-    <Bar data={chartData} plugins={[ChartDataLabels]} options={options as any} />
+    <Bar
+      data={chartData}
+      plugins={[ChartDataLabels]}
+      options={options as any}
+    />
   );
-}
+};

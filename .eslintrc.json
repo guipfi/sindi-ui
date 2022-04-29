@@ -15,7 +15,6 @@
         "allowNumber": false
       }
     ],
-    "semi": [2, "always", { "omitLastInOneLineBlock": true }],
-    "ignorePatterns": ["**/*.config.js"]
+    "semi": [2, "always", { "omitLastInOneLineBlock": true }]
   }
 }

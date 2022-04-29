@@ -1,5 +1,6 @@
-import { IBalanceTypeDistribuition } from "services/TransparenceService";
-import { formatPercentage } from "utils";
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { IBalanceTypeDistribuition } from 'services/TransparenceService';
+import { formatPercentage } from 'utils';
 import ChartDataLabels from 'chartjs-plugin-datalabels';
 import {
   Chart as ChartJS,
@@ -25,25 +26,34 @@ export const chartColors = [
   '#ffa600',
 ];
 
-ChartJS.register(ArcElement, Tooltip, Legend, CategoryScale, LinearScale, ChartDataLabels, {
-  id: 'customSpacingLegend',
-  beforeInit(chart) {
-    // Get reference to the original fit function
-    const originalFit = (chart as any).legend.fit;
+ChartJS.register(
+  ArcElement,
+  Tooltip,
+  Legend,
+  CategoryScale,
+  LinearScale,
+  ChartDataLabels,
+  {
+    id: 'customSpacingLegend',
+    beforeInit(chart) {
+      // Get reference to the original fit function
+      const originalFit = (chart as any).legend.fit;
 
-    // Override the fit function
-    (chart as any).legend.fit = function fit() {
-      // Call original function and bind scope in order to use `this` correctly inside it
-      originalFit.bind(chart.legend)();
-      // Change the height as suggested in another answers
-      this.height += 24;
-    }
+      // Override the fit function
+      (chart as any).legend.fit = function fit() {
+        // Call original function and bind scope in order to use `this` correctly inside it
+        originalFit.bind(chart.legend)();
+        // Change the height as suggested in another answers
+        this.height += 24;
+      };
+    },
   }
-});
+);
 
-export const BalanceDistribuitionChart: React.FC<IBalanceDistribuitionChart> = ({ data }) => {
-
-  const labels = data.map(({type}) => type);
+export const BalanceDistribuitionChart: React.FC<
+  IBalanceDistribuitionChart
+> = ({ data }) => {
+  const labels = data.map(({ type }) => type);
 
   const options: ChartOptions = {
     maintainAspectRatio: false,
@@ -56,14 +66,14 @@ export const BalanceDistribuitionChart: React.FC<IBalanceDistribuitionChart> = (
       x: {
         display: false,
         grid: {
-          display: false
+          display: false,
         },
       },
       y: {
         display: false,
         grid: {
-          display: false
-        }
+          display: false,
+        },
       },
     },
     layout: {
@@ -76,7 +86,7 @@ export const BalanceDistribuitionChart: React.FC<IBalanceDistribuitionChart> = (
         labels: {
           padding: 16,
           pointStyle: 'circle',
-          usePointStyle: true
+          usePointStyle: true,
         },
         position: 'top',
       },
@@ -85,7 +95,7 @@ export const BalanceDistribuitionChart: React.FC<IBalanceDistribuitionChart> = (
         font: {
           family: 'Roboto',
           weight: 500,
-          size: 12
+          size: 12,
         },
         anchor: 'end',
         align: 'end',
@@ -93,21 +103,26 @@ export const BalanceDistribuitionChart: React.FC<IBalanceDistribuitionChart> = (
         color: labels.map((data, index) => chartColors[index]),
         formatter: function (value: number) {
           return formatPercentage(value);
-        }
-      }
-    }
+        },
+      },
+    },
   };
-
 
   const chartData = {
     labels: labels,
-    datasets: [{
-      backgroundColor: labels.map((data, index) => chartColors[index]),
-      data: data.map(({value}) => value),
-    }],
+    datasets: [
+      {
+        backgroundColor: labels.map((data, index) => chartColors[index]),
+        data: data.map(({ value }) => value),
+      },
+    ],
   };
 
   return (
-    <Doughnut data={chartData} plugins={[ChartDataLabels]} options={options as any} />
+    <Doughnut
+      data={chartData}
+      plugins={[ChartDataLabels]}
+      options={options as any}
+    />
   );
-}
+};

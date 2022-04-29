@@ -1,4 +1,4 @@
-import { Loader, Typography, WhatsApp } from 'components/shared';
+import { Loader, Typography } from 'components/shared';
 import { SectionHeader } from 'components/shared/SectionHeader';
 import { useComunication } from 'hooks/useComunication';
 import type { NextPage } from 'next';
@@ -16,25 +16,22 @@ const Comunicado: NextPage = () => {
     isError: isErrorComunication,
   } = useComunication(id as string);
 
-  const {
-    title,
-    content,
-  } = comunication || {};
+  const { title, content } = comunication || {};
 
   return (
     <section className={styles.container}>
-      <SectionHeader title={title || ''} />
-      <div style={{marginTop: '1rem'}}>
+      <SectionHeader title={title ?? ''} />
+      <div style={{ marginTop: '1rem' }}>
         {isLoadingComunication && <Loader />}
-        {isErrorComunication && <Typography>Erro ao carregar o comunicado.</Typography>}
+        {isErrorComunication && (
+          <Typography>Erro ao carregar o comunicado.</Typography>
+        )}
       </div>
-      {content &&  
+      {content != null && (
         <section className={styles.comunication}>
-          <Typography>
-            {content}
-          </Typography>
+          <Typography>{content}</Typography>
         </section>
-      }
+      )}
     </section>
   );
 };
