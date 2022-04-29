@@ -11,9 +11,7 @@ const queryClient = new QueryClient();
 
 function MyApp({ Component, pageProps }: AppProps) {
 
-  if (process.env.NODE_ENV === "development") {
-    require("mocks");
-  }
+  require("mocks");
 
   return (
     <QueryClientProvider client={queryClient}>
